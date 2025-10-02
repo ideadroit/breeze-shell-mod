@@ -3,9 +3,9 @@ permissions: write-all
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "main" ]
   release:
     types: [created]
 
