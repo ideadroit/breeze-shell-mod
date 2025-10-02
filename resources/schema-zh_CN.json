@@ -1,0 +1,455 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "definitions": {
+    "context_menu": {
+      "definitions": {
+        "theme": {
+          "definitions": {
+            "animation": {
+              "definitions": {
+                "main": {
+                  "title": "菜单动画配置",
+                  "description": "上下文菜单的主体动画效果",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "y": { "$ref": "#/definitions/animated_float_conf" }
+                  }
+                },
+                "item": {
+                  "title": "菜单项动画配置",
+                  "description": "上下文菜单项的动画效果",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "opacity": { "$ref": "#/definitions/animated_float_conf" },
+                    "x": { "$ref": "#/definitions/animated_float_conf" },
+                    "y": { "$ref": "#/definitions/animated_float_conf" },
+                    "width": { "$ref": "#/definitions/animated_float_conf" }
+                  }
+                },
+                "bg": {
+                  "title": "背景动画配置",
+                  "description": "上下文菜单的背景动画效果",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "opacity": { "$ref": "#/definitions/animated_float_conf" },
+                    "x": { "$ref": "#/definitions/animated_float_conf" },
+                    "y": { "$ref": "#/definitions/animated_float_conf" },
+                    "w": { "$ref": "#/definitions/animated_float_conf" },
+                    "h": { "$ref": "#/definitions/animated_float_conf" }
+                  }
+                }
+              },
+              "title": "动画效果配置",
+              "description": "上下文菜单的动画效果",
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "main": {
+                  "$ref": "#/definitions/context_menu/definitions/theme/definitions/animation/definitions/main"
+                },
+                "item": {
+                  "$ref": "#/definitions/context_menu/definitions/theme/definitions/animation/definitions/item"
+                },
+                "main_bg": {
+                  "$ref": "#/definitions/context_menu/definitions/theme/definitions/animation/definitions/bg"
+                },
+                "submenu_bg": {
+                  "$ref": "#/definitions/context_menu/definitions/theme/definitions/animation/definitions/bg"
+                }
+              }
+            }
+          },
+          "title": "上下文菜单主题配置",
+          "description": "配置上下文菜单的主题和外观",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "use_dwm_if_available": {
+              "title": "尝试使用 Windows 11 圆角",
+              "description": "在 Windows 11 下使用 DWM 圆角而不是 SetWindowRgn 圆角",
+              "type": "boolean",
+              "default": true
+            },
+            "background_opacity": {
+              "title": "背景透明度",
+              "description": "0.0 表示完全透明，1.0 表示完全不透明",
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "default": 1
+            },
+            "acrylic": {
+              "title": "使用亚克力背景效果",
+              "description": "半透明纹理，增加层次感",
+              "type": "boolean",
+              "default": true
+            },
+            "radius": {
+              "title": "圆角大小",
+              "description": "上下文菜单的圆角大小",
+              "type": "number",
+              "minimum": 0,
+              "default": 6
+            },
+            "font_size": {
+              "title": "字体大小",
+              "description": "上下文菜单的字体大小",
+              "type": "number",
+              "minimum": 0,
+              "default": 14
+            },
+            "item_height": {
+              "title": "菜单项高度",
+              "description": "上下文菜单项的高度",
+              "type": "number",
+              "minimum": 0,
+              "default": 23
+            },
+            "item_gap": {
+              "title": "菜单项间距",
+              "description": "上下文菜单项之间的间距",
+              "type": "number",
+              "minimum": 0,
+              "default": 3
+            },
+            "item_radius": {
+              "title": "圆角大小",
+              "description": "上下文菜单项的圆角大小",
+              "type": "number",
+              "minimum": 0,
+              "default": 5
+            },
+            "margin": {
+              "title": "外边距",
+              "description": "上下文菜单的外边距（横向）",
+              "type": "number",
+              "minimum": 0,
+              "default": 5
+            },
+            "padding": {
+              "title": "内边距",
+              "description": "上下文菜单的内边距（横向）",
+              "type": "number",
+              "minimum": 0,
+              "default": 6
+            },
+            "text_padding": {
+              "title": "文本内边距",
+              "description": "上下文菜单项的文本内边距（横向）",
+              "type": "number",
+              "minimum": 0,
+              "default": 8
+            },
+            "icon_padding": {
+              "title": "左侧图标内边距",
+              "description": "上下文菜单项的左侧图标内边距（横向）",
+              "type": "number",
+              "minimum": 0,
+              "default": 4
+            },
+            "right_icon_padding": {
+              "title": "右侧图标（展开图标）内边距",
+              "description": "上下文菜单项的右侧图标（展开图标）内边距（横向）",
+              "type": "number",
+              "minimum": 0,
+              "default": 10
+            },
+            "multibutton_line_gap": {
+              "title": "多按钮间距",
+              "description": "上下文菜单项多按钮之间的间距（横向）",
+              "type": "number",
+              "default": -6
+            },
+            "scrollbar_width": {
+              "title": "滚动条宽度",
+              "description": "上下文菜单滚动条的宽度",
+              "type": "number",
+              "minimum": 0,
+              "default": 6
+            },
+            "scrollbar_radius": {
+              "title": "滚动条圆角大小",
+              "description": "上下文菜单滚动条的圆角大小",
+              "type": "number",
+              "minimum": 0,
+              "default": 3
+            },
+            "hotkey_padding": {
+              "title": "快捷键内边距",
+              "description": "上下文菜单项快捷键的内边距（横向）",
+              "type": "number",
+              "minimum": 0,
+              "default": 4
+            },
+            "acrylic_color_light": {
+              "title": "亚克力背景颜色（浅色模式）",
+              "description": "支持以下格式：#RRGGBBAA、#RRGGBB、rgba(R, G, B, A)、rgb(R, G, B)、linear-gradient(angle, color1, color2)、radial-gradient(radius, color1, color2)、solid(color)",
+              "type": "string",
+              "default": "#fefefe00"
+            },
+            "acrylic_color_dark": {
+              "title": "亚克力背景颜色（深色模式）",
+              "description": "支持以下格式：#RRGGBBAA、#RRGGBB、rgba(R, G, B, A)、rgb(R, G, B)、linear-gradient(angle, color1, color2)、radial-gradient(radius, color1, color2)、solid(color)",
+              "type": "string",
+              "default": "#28282800"
+            },
+            "use_self_drawn_border": {
+              "title": "使用自绘边框、阴影",
+              "description": "需关闭 DWM 边框",
+              "type": "boolean",
+              "default": true
+            },
+            "border_color_light": {
+              "title": "边框颜色（浅色模式）",
+              "description": "上下文菜单的边框颜色（浅色模式）",
+              "type": "string",
+              "default": "#00000022"
+            },
+            "border_color_dark": {
+              "title": "边框颜色（深色模式）",
+              "description": "上下文菜单的边框颜色（深色模式）",
+              "type": "string",
+              "default": "#ffffff22"
+            },
+            "shadow_color_light_from": {
+              "title": "阴影颜色起始值（浅色模式）",
+              "description": "上下文菜单的阴影颜色起始值（浅色模式）",
+              "type": "string",
+              "default": "#00000020"
+            },
+            "shadow_color_light_to": {
+              "title": "阴影颜色终止值（浅色模式）",
+              "description": "上下文菜单的阴影颜色终止值（浅色模式）",
+              "type": "string",
+              "default": "#00000000"
+            },
+            "shadow_color_dark_from": {
+              "title": "阴影颜色起始值（深色模式）",
+              "description": "上下文菜单的阴影颜色起始值（深色模式）",
+              "type": "string",
+              "default": "#00000033"
+            },
+            "shadow_color_dark_to": {
+              "title": "阴影颜色结束值（深色模式）",
+              "description": "上下文菜单的阴影颜色终止值（深色模式）",
+              "type": "string",
+              "default": "#00000000"
+            },
+            "shadow_blur": {
+              "title": "阴影模糊半径",
+              "description": "上下文菜单的阴影模糊半径",
+              "type": "number",
+              "minimum": 0,
+              "default": 10
+            },
+            "shadow_offset_x": {
+              "title": "阴影偏移（横向）",
+              "description": "上下文菜单的阴影偏移（横向）",
+              "type": "number",
+              "default": 0
+            },
+            "shadow_offset_y": {
+              "title": "阴影偏移（纵向）",
+              "description": "上下文菜单的阴影偏移（纵向）",
+              "type": "number",
+              "default": 0
+            },
+            "shadow_opacity": {
+              "title": "阴影透明度",
+              "description": "0.0 表示完全透明，1.0 表示完全不透明",
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "default": 0.2
+            },
+            "shadow_size": {
+              "title": "阴影大小",
+              "description": "上下文菜单的阴影大小",
+              "type": "number",
+              "minimum": 0,
+              "default": 10
+            },
+            "border_width": {
+              "title": "边框宽度",
+              "description": "上下文菜单的边框宽度",
+              "type": "number",
+              "minimum": 0,
+              "default": 1.5
+            },
+            "inset_border": {
+              "title": "使用内嵌边框",
+              "description": "上下文菜单使用内嵌风格的边框",
+              "type": "boolean",
+              "default": true
+            },
+            "acrylic_opacity": {
+              "title": "亚克力背景透明度",
+              "description": "0.0 表示完全透明，1.0 表示完全不透明",
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "default": 0.1,
+              "deprecationMessage": "该配置项已废弃"
+            },
+            "animation": {
+              "$ref": "#/definitions/context_menu/definitions/theme/definitions/animation"
+            }
+          }
+        },
+        "position": {
+          "title": "定位配置",
+          "description": "上下文菜单的定位配置",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "padding_vertical": {
+              "title": "内边距（纵向）",
+              "description": "上下文菜单弹出位置的内边距（纵向）",
+              "type": "integer",
+              "minimum": 0,
+              "default": 20
+            },
+            "padding_horizontal": {
+              "title": "内边距（横向）",
+              "description": "上下文菜单弹出位置的内边距（横向）",
+              "type": "integer",
+              "minimum": 0,
+              "default": 0
+            }
+          }
+        }
+      },
+      "title": "上下文菜单配置",
+      "description": "配置上下文菜单的行为和外观",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "theme": { "$ref": "#/definitions/context_menu/definitions/theme" },
+        "vsync": {
+          "title": "启用垂直同步",
+          "description": "启用垂直同步以减少撕裂现象",
+          "type": "boolean",
+          "default": true
+        },
+        "ignore_owner_draw": {
+          "title": "忽略自绘菜单",
+          "description": "不对自绘菜单进行替换",
+          "type": "boolean",
+          "default": true
+        },
+        "reverse_if_open_to_up": {
+          "title": "向上展开时反向排列菜单项",
+          "description": "当上下文菜单自下而上展开时，反转上下文菜单项顺序",
+          "type": "boolean",
+          "default": true
+        },
+        "experimental_ownerdraw_support": {
+          "title": "启用自绘菜单（实验性功能）",
+          "description": "目前处于实验阶段，可能会有问题",
+          "type": "boolean",
+          "default": false
+        },
+        "hotkeys": {
+          "title": "启用快捷键",
+          "description": "启用上下文菜单的快捷键操作",
+          "type": "boolean",
+          "default": true
+        },
+        "search_large_dwItemData_range": {
+          "title": "搜索更大范围的图标",
+          "description": "搜索更大范围的 DWItemData",
+          "type": "boolean",
+          "default": false,
+          "deprecationMessage": "该配置项仅为调试用途"
+        },
+        "position": {
+          "$ref": "#/definitions/context_menu/definitions/position"
+        }
+      }
+    },
+    "animated_float_conf": {
+      "title": "通用动画效果配置",
+      "description": "通用动画的行为和效果配置",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "duration": {
+          "title": "动画持续时间",
+          "description": "动画的持续时间（毫秒）",
+          "type": "number",
+          "minimum": 0,
+          "default": 150
+        },
+        "easing": {
+          "title": "动画曲线",
+          "description": "动画的缓动函数",
+          "type": "string",
+          "enum": ["mutation", "linear", "ease_in", "ease_out", "ease_in_out"],
+          "enumDescriptions": ["禁用", "线性", "缓入", "缓出", "缓入缓出"],
+          "default": "ease_in_out"
+        },
+        "delay_scale": {
+          "title": "延迟缩放",
+          "description": "动画效果的延迟缩放比例",
+          "type": "number",
+          "minimum": 0,
+          "default": 1
+        }
+      }
+    }
+  },
+  "properties": {
+    "$schema": { "type": "string" },
+    "default_animation": { "$ref": "#/definitions/animated_float_conf" },
+    "context_menu": { "$ref": "#/definitions/context_menu" },
+    "debug_console": {
+      "title": "启用调试控制台",
+      "description": "启用调试控制台以查看调试信息",
+      "type": "boolean",
+      "default": false
+    },
+    "font_path_main": {
+      "title": "字体路径",
+      "description": "字体的路径",
+      "type": "string",
+      "default": "C:/Windows/Fonts/segoeui.ttf"
+    },
+    "font_path_fallback": {
+      "title": "字体路径（备用）",
+      "description": "备用字体的路径",
+      "type": "string",
+      "default": "C:/Windows/Fonts/msyh.ttc"
+    },
+    "default_mono_font": {
+      "title": "默认等宽字体路径",
+      "description": "默认等宽字体的路径",
+      "type": "string",
+      "default": "C:/Windows/Fonts/consola.ttf"
+    },
+    "res_string_loader_use_hook": {
+      "title": "启用资源字符串加载器钩子",
+      "description": "用 hook 方式加载更多 resid 以获取更好的本地化支持",
+      "type": "boolean",
+      "default": false
+    },
+    "avoid_resize_ui": {
+      "title": "避免更改 UI 窗口大小",
+      "description": "强制固定宽度和高度",
+      "type": "boolean",
+      "default": false,
+      "deprecationMessage": "该配置项仅为调试用途"
+    },
+    "plugin_load_order": {
+      "title": "插件加载顺序（靠前优先）",
+      "description": "插件的无拓展名文件名（例如：Windows 11 Icon Pack）",
+      "type": "array",
+      "items": { "type": "string" },
+      "default": []
+    }
+  }
+}
